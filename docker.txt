@@ -1,3 +1,2 @@
 Docker commands
-1 - docker run -it --name tux --restart="always" image bash
-2 - 
+Long running - docker run -it --name tux --restart="always" image bash
