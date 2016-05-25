@@ -1,2 +1,3 @@
 Docker commands
-Long running - docker run -it --name tux --restart="always" image bash
+Long running      - docker run -it --name tux --restart="always" image bash
+Host disk mapping - docker run --name="tux" -v /c/Users/bruno.taboada/test:/home/tuxedo/test -it brunotaboada/tuxedo12c bash
