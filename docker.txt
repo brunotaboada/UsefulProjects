@@ -1,3 +1,6 @@
 Docker useful commands
 Long running      - docker run -it --name tux --restart="always" image bash
 Host disk mapping - docker run --name="tux" -v /c/Users/bruno.taboada/test:/home/tuxedo/test -it brunotaboada/tuxedo12c bash
+
+# Executing a docker aplication where source is outside container
+docker run -v [host directory path]:[container directory path] -it [image name]
