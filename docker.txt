@@ -1,3 +1,8 @@
 Docker useful commands
 Long running      - docker run -d -it --name tux --restart="always" image bash
 Host disk mapping - docker run --name="tux" -v /c/Users/bruno.taboada/test:/home/tuxedo/test -it brunotaboada/tuxedo12c bash
+
+
+
+#Oracle XE Docker.
+docker run -d -p 49160:22 -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true wnameless/oracle-xe-11g
