@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	<files src="C:/Users/bruno.taboadamacedo/Documents" dest="C:/config/uat/apache/properties">
+		NDA.pdf,
+		ItaDiplomaOriginal.pdf
+	</files>
+	<files src="C:/Users/bruno.taboadamacedo/Documents" dest="C:/config">
+		NDA.pdf,
+		ItaDiplomaOriginal.pdf
+	</files>
+	<files src="C:/Users/bruno.taboadamacedo/Documents/datastructures" dest="C:/config/uat/apache/properties">
+		pom.xml,
+		NewPassport.pdf,
+		Best Practices for Microservices whitepaper2.pdf
+	</files>
+	<root>
+		<name>master.sql</name>
+		<dest>C:/config/</dest>
+	</root>
+</document>
