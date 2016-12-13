@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+	<comment>This is new xml-based configuration file.</comment>
+	<entry key="db.driverClass">oracle.jdbc.OracleDriver</entry>
+	<entry key="db.url">jdbc:oracle:thin:@server:1825:service</entry>
+	<entry key="db.username">RPTAP_OWNER</entry>
+	<entry key="db.password">temp_123</entry>
+	
+	<entry key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</entry>
+	<entry key="hibernate.hbm2ddl.auto">none</entry>
+	
+</properties>
