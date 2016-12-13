@@ -1,0 +1,10 @@
+com\db\configuration\JsonViewResolver.class
+com\db\repository\SampleRepository.class
+com\db\datasources\DataSources.class
+com\db\configuration\PropertiesJavaConfig.class
+com\db\configuration\AppInitializer.class
+com\db\properties\configuration\DatabaseProperties.class
+com\db\configuration\GeneralConfiguration.class
+com\db\resource\controller\urlreports\UrlReportController.class
+com\db\datasources\PersistenceContext.class
+com\db\services\SampleService.class

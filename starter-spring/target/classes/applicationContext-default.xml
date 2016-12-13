@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+      http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+      http://www.springframework.org/schema/context 
+      http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<context:component-scan base-package="com.db.properties.configuration"/>
+
+	<context:property-placeholder location="classpath:application-default.xml,classpath:application-dev.properties" system-properties-mode="OVERRIDE"  ignore-unresolvable="true" ignore-resource-not-found="true" />
+
+	<!-- scans for annotated classes in the com.company package -->
+
+	<!-- scans for annotated classes in the com.company package -->
+	<!-- <context:component-scan base-package="com.db.${spring.profiles.active}" 
+		/> -->
+
+	<!-- enables annotation based configuration -->
+
+	<!-- <beans profile="dev"> allows for ${} replacement in the spring xml 
+		configuration from the application-default.properties, application-dev files 
+		on the classpath <context:property-placeholder location="classpath:properties/application-default.properties, 
+		classpath:properties/application-dev.properties" ignore-unresolvable="true" 
+		ignore-resource-not-found="true" /> scans for annotated classes in the com.env.dev 
+		package <context:component-scan base-package="com.env.dev" /> </beans> -->
+
+
+</beans>
