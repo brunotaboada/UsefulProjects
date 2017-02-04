@@ -6,3 +6,47 @@ Host disk mapping - docker run --name="tux" -v /c/Users/bruno.taboada/test:/home
 
 #Oracle XE Docker.
 docker run -d -p 49160:22 -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true wnameless/oracle-xe-11g
+
+
+
+public class EvilExecutor {
+
+    private String readCode(String sourcePath) throws FileNotFoundException {
+        InputStream stream = new FileInputStream(sourcePath);
+        String separator = System.getProperty("line.separator");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+        return reader.lines().collect(Collectors.joining(separator));
+    }
+
+    private Path saveSource(String source) throws IOException {
+        String tmpProperty = System.getProperty("java.io.tmpdir");
+        Path sourcePath = Paths.get(tmpProperty, "Harmless.java");
+        Files.write(sourcePath, source.getBytes(UTF_8));
+        return sourcePath;
+    }
+
+    private Path compileSource(Path javaFile) {
+        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+        compiler.run(null, null, null, javaFile.toFile().getAbsolutePath());
+        return javaFile.getParent().resolve("Harmless.class");
+    }
+
+    private void runClass(Path javaClass)
+            throws MalformedURLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+        URL classUrl = javaClass.getParent().toFile().toURI().toURL();
+        URLClassLoader classLoader = URLClassLoader.newInstance(new URL[]{classUrl});
+        Class<?> clazz = Class.forName("Harmless", true, classLoader);
+        clazz.newInstance();
+    }
+
+    public void doEvil(String sourcePath) throws Exception {
+        String source = readCode(sourcePath);
+        Path javaFile = saveSource(source);
+        Path classFile = compileSource(javaFile);
+        runClass(classFile);
+    }
+
+    public static void main(String... args) throws Exception {
+        new EvilExecutor().doEvil(args[0]);
+    }
+}
