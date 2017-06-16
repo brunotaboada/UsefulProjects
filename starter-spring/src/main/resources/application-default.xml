@@ -4,9 +4,9 @@
 <properties>
 	<comment>This is new xml-based configuration file.</comment>
 	<entry key="db.driverClass">oracle.jdbc.OracleDriver</entry>
-	<entry key="db.url">jdbc:oracle:thin:@server:1825:service</entry>
-	<entry key="db.username">RPTAP_OWNER</entry>
-	<entry key="db.password">temp_123</entry>
+	<entry key="db.url">jdbc:oracle:thin:@localhost:1521:xe</entry>
+	<entry key="db.username">dev_db</entry>
+	<entry key="db.password">123456</entry>
 	
 	<entry key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</entry>
 	<entry key="hibernate.hbm2ddl.auto">none</entry>

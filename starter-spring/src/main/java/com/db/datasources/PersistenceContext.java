@@ -20,56 +20,56 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 class PersistenceContext {
 
-	@Autowired
-	Environment env;
-	
-	@Autowired
-	DataSource datasource;
+    @Autowired
+    Environment env;
 
-	@Bean
-	JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
-		JpaTransactionManager transactionManager = new JpaTransactionManager();
-		transactionManager.setEntityManagerFactory(entityManagerFactory);
-		return transactionManager;
-	}
-	
-	@Bean
-	LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-		entityManagerFactoryBean.setDataSource(datasource);
-		entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-		entityManagerFactoryBean.setPackagesToScan("db.com.entities.active");
+    @Autowired
+    DataSource datasource;
 
-		Properties jpaProperties = new Properties();
+    @Bean
+    JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(entityManagerFactory);
+        return transactionManager;
+    }
 
-		// Configures the used database dialect. This allows Hibernate to create
-		// SQL
-		// that is optimized for the used database.
-		jpaProperties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
+    @Bean
+    LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+        entityManagerFactoryBean.setDataSource(datasource);
+        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+        entityManagerFactoryBean.setPackagesToScan("com.db.entities");
 
-		// Specifies the action that is invoked to the database when the
-		// Hibernate
-		// SessionFactory is created or closed.
-		jpaProperties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+        Properties jpaProperties = new Properties();
 
-		// Configures the naming strategy that is used when Hibernate creates
-		// new database objects and schema elements
-		// jpaProperties.put("hibernate.ejb.naming_strategy",
-		// env.getProperty("hibernate.ejb.naming_strategy"));
+        // Configures the used database dialect. This allows Hibernate to create
+        // SQL
+        // that is optimized for the used database.
+        jpaProperties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
 
-		// If the value of this property is true, Hibernate writes all SQL
-		// statements to the console.
-		// jpaProperties.put("hibernate.show_sql",
-		// env.getProperty("hibernate.show_sql"));
+        // Specifies the action that is invoked to the database when the
+        // Hibernate
+        // SessionFactory is created or closed.
+        jpaProperties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
 
-		// If the value of this property is true, Hibernate will format the SQL
-		// that is written to the console.
-		// jpaProperties.put("hibernate.format_sql",
-		// env.getProperty("hibernate.format_sql"));
+        // Configures the naming strategy that is used when Hibernate creates
+        // new database objects and schema elements
+        // jpaProperties.put("hibernate.ejb.naming_strategy",
+        // env.getProperty("hibernate.ejb.naming_strategy"));
 
-		entityManagerFactoryBean.setJpaProperties(jpaProperties);
+        // If the value of this property is true, Hibernate writes all SQL
+        // statements to the console.
+        // jpaProperties.put("hibernate.show_sql",
+        // env.getProperty("hibernate.show_sql"));
 
-		return entityManagerFactoryBean;
-	}
-	
+        // If the value of this property is true, Hibernate will format the SQL
+        // that is written to the console.
+        // jpaProperties.put("hibernate.format_sql",
+        // env.getProperty("hibernate.format_sql"));
+
+        entityManagerFactoryBean.setJpaProperties(jpaProperties);
+
+        return entityManagerFactoryBean;
+    }
+
 }

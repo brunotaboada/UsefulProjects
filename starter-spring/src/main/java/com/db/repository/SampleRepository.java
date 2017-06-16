@@ -1,11 +1,15 @@
 package com.db.repository;
 
-import javax.persistence.Entity;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.db.entities.Test;
+
+/**
+ * @author bruno.taboada
+ *
+ */
 @Transactional
-public interface SampleRepository extends JpaRepository<Entity, Long> {
-	//public Entity findByName();
+public interface SampleRepository extends JpaRepository<Test, Long> {
+    // public Entity findByName();
 }
